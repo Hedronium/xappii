@@ -1,0 +1,8 @@
+{
+  "name": "xappii",
+  "version": "0.0.1",
+  "description": "A web scraper for node.js",
+  "main": "index.js",
+  "author": "Hedronium",
+  "license": "MIT"
+}
