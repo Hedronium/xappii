@@ -7,33 +7,37 @@ class Process extends EventEmitter {
 	
 	queue:any = null;
 
-	delay:number = 0;
-	perMinute:number = 0;
-	queueType:string = null;
-	phantom:string = null;
-	concurrent:number = 0;
+	protected _delay:number = 0;
+	protected _perMinute:number = 0;
+	protected _concurrent:number = 0;
+	protected _start:number = 0;
+	protected _running:number = 0;
+	protected _request_this_minute = 0;
+	protected _finished = 0;
+	protected _fails = 0;
 	config:any = null;
 
 	
 	constructor(config: ConfigInterface) {
 		super();
 		this.config = new Config(config);
-		this.delay = config.delay;
-		this.perMinute = config.perMinute;
-		this.queueType = config.queueType;
+		this._delay = this.config.delay();
+		this._perMinute = this.config.perMinute();
+		this._concurrent = this.config.concurrent();
+		this.queue = this.config.queue();
+		
 	}
 
 	/**
 	 * Push a link which needs to be processed 
 	 */
 	public push(object: PushInterface) {
-		if (typeof object.url == 'string') {
-			throw new Error('Url must be a string');
-		}
-		if (object.priority*1 <= 0) {
+		this.queue.push(object);	
+	}
 
-			throw new Error(`Requests per minute must be a positive numeric value.`);
-		}
+	private start() {
+
+		this.queue.pop();
 
 	}
 

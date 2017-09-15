@@ -40,12 +40,16 @@ export default class Config {
 		}
 	}
 
+	/**
+	 *  This is a generalized queue method , it inject the configuration into Queue class, which handles
+	 * 	both in memory and redis based priority queue . nad returns the class instance
+	 */
 	public queue():any {
-
+		let QueueHolder = new Queue(Config);
+		return QueueHolder.instance();
 	}
 
 	public delay():number {
-
 		if (this.config.delay*1 <= 0) {
 			throw new Error(`Requests per minute must be a positive numeric value.`);
 		} else {
