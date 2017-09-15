@@ -1,3 +1,4 @@
+import {AbstractQueue} from './abstract/AbstractQueue';
 
 export  interface redisConfigInterface {
     host: string,
@@ -12,8 +13,8 @@ export interface ConfigInterface {
 	delay?: number,
 	perMinute?: number,
 	queueType?: string,
-    phantom?: string,
-    redis?: redisConfigInterface
+    scraper?: Function,
+    storage?: AbstractQueue
 }
 
 export interface PushInterface {
