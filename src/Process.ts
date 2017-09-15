@@ -1,11 +1,12 @@
 import * as EventEmitter from 'events';
 import {ConfigInterface,PushInterface} from './Interfaces';
+import {AbstractQueue} from './abstract/AbstractQueue';
 import Config from './Config';
 
 class Process extends EventEmitter {
 	
 	
-	queue:any = null;
+	queue:AbstractQueue;
 
 	protected _delay:number = 0;
 	protected _perMinute:number = 0;

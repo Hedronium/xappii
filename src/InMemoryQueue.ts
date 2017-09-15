@@ -6,7 +6,6 @@ export class InMemoryQueue implements AbstractQueue {
     queue:any;
 
     constructor() {
-
 			this.queue = new PriorityQueue({
 							strategy: PriorityQueue.BinaryHeapStrategy,
 							comparator: function(a:any, b:any) {

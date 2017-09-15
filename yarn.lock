@@ -48,6 +48,10 @@
     "@types/express-serve-static-core" "*"
     "@types/mime" "*"
 
+"@types/xmldom@^0.1.29":
+  version "0.1.29"
+  resolved "https://registry.yarnpkg.com/@types/xmldom/-/xmldom-0.1.29.tgz#c4428b0ca86d3b881475726fd94980b38a27c381"
+
 js-priority-queue@^0.1.5:
   version "0.1.5"
   resolved "https://registry.yarnpkg.com/js-priority-queue/-/js-priority-queue-0.1.5.tgz#f71e9b2120c91e8a1ddab3b7d347dac01d81e837"
