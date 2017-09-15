@@ -14,7 +14,7 @@ export interface ConfigInterface {
 	perMinute?: number,
 	queueType?: string,
     scraper?: Function,
-    storage?: AbstractQueue
+    storage?: { new(): AbstractQueue }
 }
 
 export interface PushInterface {

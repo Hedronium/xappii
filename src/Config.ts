@@ -41,7 +41,7 @@ export default class Config {
 		if (typeof this.config.storage !== 'function') {
 			throw new Error('Storage has to be a Class type');
 		}
-		return  (!this.config.storage) ? new InMemoryQueue : this.config.storage;
+		return  (!this.config.storage) ? new InMemoryQueue : new this.config.storage;
 	}
 
 	public delay():number {

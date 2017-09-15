@@ -6,6 +6,10 @@
   version "3.5.11"
   resolved "https://registry.yarnpkg.com/@types/bluebird/-/bluebird-3.5.11.tgz#60482b3cddce9111dee3cafd08ab54fffee4b119"
 
+"@types/cheerio@^0.22.2":
+  version "0.22.2"
+  resolved "https://registry.yarnpkg.com/@types/cheerio/-/cheerio-0.22.2.tgz#539625874bc856086ad491c2fdc9b10c05ae308e"
+
 "@types/express-serve-static-core@*":
   version "4.0.52"
   resolved "https://registry.yarnpkg.com/@types/express-serve-static-core/-/express-serve-static-core-4.0.52.tgz#77ab67fffc402ff6e480c87c71d799ba79880223"
@@ -58,7 +62,7 @@
     "@types/bluebird" "*"
     "@types/request" "*"
 
-"@types/request@*":
+"@types/request@*", "@types/request@^2.0.3":
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/@types/request/-/request-2.0.3.tgz#bdf0fba9488c822f77e97de3dd8fe357b2fb8c06"
   dependencies:

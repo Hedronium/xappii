@@ -14,11 +14,6 @@ export class InMemoryQueue implements AbstractQueue {
 					});
     }
 
-
-    public instance():InMemoryQueue {
-        return this;
-    }
-
     // push data into Scrapers queue processor ,this is a generalized method
     public push(data:PushInterface):InMemoryQueue {
         this.queue.queue(data);

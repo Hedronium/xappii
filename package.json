@@ -6,9 +6,11 @@
   "author": "Aniruddha Chakraborty <project.anik@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "@types/cheerio": "^0.22.2",
     "@types/js-priority-queue": "^0.0.5",
     "@types/kue": "^0.11.6",
     "@types/node": "^8.0.28",
+    "@types/request": "^2.0.3",
     "@types/request-promise": "^4.1.37",
     "@types/xmldom": "^0.1.29",
     "js-priority-queue": "^0.1.5",
