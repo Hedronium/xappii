@@ -26,7 +26,7 @@ export class InMemoryQueue implements AbstractQueue {
     }
 
     // pop data from scrapers queue process, this is also a generalized method
-    public pop(callback:Function):Promise<PushInterface> {       
+    public pop():Promise<PushInterface> {       
         return new Promise((resolve,reject) => {
             resolve(this.queue.deque());
         });

@@ -3,13 +3,15 @@
   "version": "0.0.1",
   "description": "A web scraper for node.js",
   "main": "index.js",
-  "author": "Hedronium",
+  "author": "Aniruddha Chakraborty <project.anik@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "@types/js-priority-queue": "^0.0.5",
     "@types/kue": "^0.11.6",
     "@types/node": "^8.0.28",
+    "@types/request-promise": "^4.1.37",
     "@types/xmldom": "^0.1.29",
-    "js-priority-queue": "^0.1.5"
+    "js-priority-queue": "^0.1.5",
+    "request-promise": "^4.2.1"
   }
 }
