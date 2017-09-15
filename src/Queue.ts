@@ -1,7 +1,7 @@
 import * as PriorityQueue from 'js-priority-queue';
 import * as Kue from 'kue';
 import {ConfigInterface,PushInterface} from './Interfaces';
-import {AbstractQueue} from './AbstractQueue';
+import  * as AbstractQueue from './AbstractQueue';
 
 class Queue {
 

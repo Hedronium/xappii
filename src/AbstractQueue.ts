@@ -5,7 +5,7 @@ abstract class AbstractQueue {
         
     }
 
-    abstract push():void;
+    abstract push(data:PushInterface):void;
     abstract pop():Promise<PushInterface>;
     abstract length():number;
 }
