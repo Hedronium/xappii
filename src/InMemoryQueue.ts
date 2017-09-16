@@ -1,17 +1,18 @@
 import * as PriorityQueue from 'js-priority-queue';
 import {AbstractQueue} from './abstract/AbstractQueue';
 import {ConfigInterface,PushInterface} from './Interfaces';
+import {Config} from './Config';
 
 export class InMemoryQueue implements AbstractQueue {
     queue:any;
 
-    constructor() {
+    constructor(config:Config) {
 			this.queue = new PriorityQueue({
-							strategy: PriorityQueue.BinaryHeapStrategy,
-							comparator: function(a:any, b:any) {
-								return b.priority - a.priority;
-							}
-					});
+                    strategy: PriorityQueue.BinaryHeapStrategy,
+                    comparator: function(a:any, b:any) {
+                        return b.priority - a.priority;
+                    }
+			});
     }
 
     // push data into Scrapers queue processor ,this is a generalized method

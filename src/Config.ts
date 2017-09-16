@@ -1,8 +1,14 @@
+import {AbstractQueue} from './abstract/AbstractQueue';
+import {AbstractFetcher} from './abstract/AbstractFetcher';
+import {AbstractProxy} from './abstract/AbstractProxy';
+import {AbstractSelector} from './abstract/AbstractSelector';
 import {ConfigInterface} from './Interfaces';
 import {InMemoryQueue} from './InMemoryQueue'
-import {AbstractQueue} from './abstract/AbstractQueue';
+import {DefaultProxy} from './DefaultProxy';
+import {DefaultFetcher} from './DefaultFetcher';
+import {DefaultSelector} from './DefaultSelector';
 
-export default class Config {
+export class Config {
 
 	config:ConfigInterface = null;
 	constructor(config: ConfigInterface) {
@@ -12,6 +18,10 @@ export default class Config {
 	/**
 	 * How many links will be processed perMinute 
 	 */
+
+	public allConfig(): ConfigInterface {
+		return this.config;
+	}
 	public perMinute():number {
 		if (this.config.perMinute*1 <= 0) {
 		
@@ -45,10 +55,28 @@ export default class Config {
 	}
 
 	public delay():number {
+
 		if (this.config.delay*1 <= 0) {
 			throw new Error(`Requests per minute must be a positive numeric value.`);
 		}
-		return this.config.delay;
+
+		if (!this.config.delay) {
+			return Math.floor((this.config.perMinute/this.config.concurrent));
+			} else {
+			return this.config.delay;
+		}
+	}
+
+	public proxy():AbstractProxy {
+		return (!this.config.proxy) ? new DefaultProxy(this) : new this.config.proxy(this);
+	}
+	
+	public fetcher():AbstractFetcher {
+		return (!this.config.scraper) ? new DefaultFetcher(this) : new this.config.scraper(this);
+	}
+
+	public selector():AbstractSelector {
+		return (!this.config.scraper) ? new DefaultSelector(this) : new DefaultSelector(this);
 	}
 
 }

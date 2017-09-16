@@ -1,4 +1,8 @@
 import {AbstractQueue} from './abstract/AbstractQueue';
+import {AbstractFetcher} from './abstract/AbstractFetcher';
+import {AbstractProxy} from './abstract/AbstractProxy';
+import {AbstractSelector} from './abstract/AbstractSelector';
+import {Config} from './Config';
 
 export  interface redisConfigInterface {
     host: string,
@@ -13,8 +17,9 @@ export interface ConfigInterface {
 	delay?: number,
 	perMinute?: number,
 	queueType?: string,
-    scraper?: Function,
-    storage?: { new(): AbstractQueue }
+    scraper?: { new(Config:Config): AbstractFetcher },
+    storage?: { new(Config:Config): AbstractQueue },
+    proxy?: { new(Config:Config): AbstractProxy }
 }
 
 export interface PushInterface {
@@ -22,4 +27,13 @@ export interface PushInterface {
     priority?: number,
     data?: any,
     tag: string
+}
+
+export interface UserAgentInterface {
+
+    'User-Agent'?: string,
+    'accept'?: string,
+    'accept-language'?: string,
+    'cache-control'?: string
+
 }
