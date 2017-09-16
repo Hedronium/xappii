@@ -51,7 +51,7 @@ export class Config {
 		if (typeof this.config.storage !== 'function') {
 			throw new Error('Storage has to be a Class type');
 		}
-		return  (!this.config.storage) ? new InMemoryQueue : new this.config.storage;
+		return  (!this.config.storage) ? new InMemoryQueue(this) : new this.config.storage(this);
 	}
 
 	public delay():number {
@@ -76,7 +76,8 @@ export class Config {
 	}
 
 	public selector():AbstractSelector {
-		return (!this.config.scraper) ? new DefaultSelector(this) : new DefaultSelector(this);
+		let target = (!this.config.scraper) ? new DefaultSelector(this) : new this.config.selector(this);
+		return  new Proxy(target,{});
 	}
 
 }

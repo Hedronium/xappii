@@ -19,7 +19,8 @@ export interface ConfigInterface {
 	queueType?: string,
     scraper?: { new(Config:Config): AbstractFetcher },
     storage?: { new(Config:Config): AbstractQueue },
-    proxy?: { new(Config:Config): AbstractProxy }
+    proxy?: { new(Config:Config): AbstractProxy },
+    selector: {new(Config:Config): AbstractSelector}
 }
 
 export interface PushInterface {

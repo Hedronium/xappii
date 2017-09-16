@@ -15,7 +15,4 @@ export class DefaultSelector implements AbstractSelector {
         return this.dom;
     }
 
-    public xpath (DomObject: DOMParser) : Error {
-        return new Error('You need to use xappii-xpath to use it');
-    }
 }
