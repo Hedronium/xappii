@@ -11,18 +11,36 @@ export class DefaultFetcher implements AbstractFetcher {
     config: Config;
 
     constructor(config: Config) {
-
          this.options = {
             headers: config.proxy().header()
         };
-        this.request = new Request(this.options);        
+        
     }
     
-    public get(data:PushInterface) :any {
+    public get(data:PushInterface) :Promise<any> {
         //let req = Request();
+        this.options.url = data.url;
+        return new Promise((resolve,reject) => {
+            return new Request(this.options,(error:any,response:any,body:any) => {
+                    if (!error) {
+                        reject(error);
+                    } else {
+                        resolve(body);
+                    }
+            });
+        });    
     }
 
-    public post(data:PushInterface) : any {
-
+    public post(data:PushInterface) : Promise<any> {
+        this.options.url = data.url;
+        return new Promise((resolve,reject) => {
+            return new Request(this.options,(error:any,response:any,body:any) => {
+                    if (!error) {
+                        reject(error);
+                    } else {
+                        resolve(body);
+                    }
+            });
+        });
     }
 }

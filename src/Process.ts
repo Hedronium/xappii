@@ -36,7 +36,7 @@ class Process extends EventEmitter {
 		this._perMinute = this.config.perMinute();
 		this._concurrent = this.config.concurrent();
 		this.queue = this.config.queue();
-		this.fetcher = new DefaultFetcher(config);
+		this.fetcher = this.config.fetcher();
 	}
 
 	/**
@@ -84,6 +84,7 @@ class Process extends EventEmitter {
 			setTimeout(() => {
 				this.queue.pop().then((result) => {
 					this.requestExecute(result).then(() => {
+						// 
 						
 					});
 				});
@@ -99,8 +100,13 @@ class Process extends EventEmitter {
 			this.__next_request_time = this.__last_request_time + this._delay;
 			this._running += 1;
 			this._request_this_minute = (this.__now > this.__this_minute) ? 1 : this._request_this_minute + 1;
-
-			//this.fetcher.get();
+			
+			this.fetcher.get(data).then((response:any) => {
+				// something ..
+				
+			}).catch((error:any) => {
+				throw error;
+			});
 
 		});
 	}
