@@ -1,7 +1,11 @@
 import {AbstractSelector} from './abstract/AbstractSelector';
 
-export default {
+export default (selector_plugins: Array<AbstractSelector>, document: Node) => ({
     get: (target:AbstractSelector, name:string) => {
-        return name in target ? target[name] : 37;
+        if (name in selector_plugins) {
+            return selector_plugins[name](document);
+        } else {
+            throw new Error(`Selector "${name}" Engine not found.`);
+        }
     }
-};
+});
